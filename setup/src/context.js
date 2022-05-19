@@ -6,12 +6,27 @@ export const API_ENDPOINT = `https://www.omdbapi.com/?apikey=${process.env.REACT
 const AppContext = React.createContext()
 
 const AppProvider = ({ children }) => {
-
   const [isLoading, setIsloading] = useState(true)
   // error is object
-  const [error, setError] = useState({show:false, msg:''})
+  const [error, setError] = useState({ show: false, msg: '' })
   const [movies, setMovies] = useState([])
-  const [query, setQuery] = useState('batman') 
+  const [query, setQuery] = useState('batman')
+
+  const fetchMovies = async (url) => {
+    // every time we type something in the input show loading on the screen
+    setIsloading(true)
+    try {
+      const response = await fetch(url)
+      const data = await response.json()
+      console.log(data)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchMovies(`${API_ENDPOINT}&s=${query}`)
+  }, [query])
 
   return <AppContext.Provider value='hello'>{children}</AppContext.Provider>
 }
