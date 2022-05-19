@@ -18,10 +18,14 @@ const AppProvider = ({ children }) => {
     try {
       const response = await fetch(url)
       const data = await response.json()
+      // properties in this API are capitalized
       if (data.Response === 'True') {
         setMovies(data.Search)
         setError({ show: false, msg: '' })
+      } else {
+        setError({ show: true, msg: data.Error })
       }
+      setIsloading(false)
     } catch (error) {
       console.log(error)
     }
