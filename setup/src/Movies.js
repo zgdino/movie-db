@@ -5,8 +5,18 @@ const url =
   'https://upload.wikimedia.org/wikipedia/commons/f/fc/No_picture_available.png'
 
 const Movies = () => {
+  // pulling it from global context
+  const {movies, isLoading} = useGlobalContext()
 
-  return <h2>movies component</h2>
+  if(isLoading) {
+    return <div className="loading"></div>
+  }
+  return <section className="movies">
+    {movies.map((movie) => {
+      console.log(movie)
+      return <h4>movie</h4>
+})}
+  </section>
 }
 
 export default Movies
