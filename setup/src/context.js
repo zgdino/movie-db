@@ -10,7 +10,7 @@ const AppProvider = ({ children }) => {
   // error is object
   const [error, setError] = useState({ show: false, msg: '' })
   const [movies, setMovies] = useState([])
-  const [query, setQuery] = useState('batman')
+  const [query, setQuery] = useState('superman')
 
   const fetchMovies = async (url) => {
     // every time we type something in the input show loading on the screen
