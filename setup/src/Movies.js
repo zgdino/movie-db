@@ -6,17 +6,21 @@ const url =
 
 const Movies = () => {
   // pulling it from global context
-  const {movies, isLoading} = useGlobalContext()
+  const { movies, isLoading } = useGlobalContext()
 
-  if(isLoading) {
-    return <div className="loading"></div>
+  if (isLoading) {
+    return <div className='loading'></div>
   }
-  return <section className="movies">
-    {movies.map((movie) => {
-      console.log(movie)
-      return <h4>movie</h4>
-})}
-  </section>
+  return (
+    <section className='movies'>
+      {movies.map((movie) => {
+        // destructuring needed properties coming from each movie
+        // giving them aliases with : colon
+        const { imdbID: id, Poster: poster, Title: title, Year: year } = movie
+        return <h4>movie</h4>
+      })}
+    </section>
+  )
 }
 
 export default Movies
