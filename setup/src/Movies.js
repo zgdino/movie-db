@@ -7,7 +7,7 @@ const url =
 const Movies = () => {
   // pulling it from global context
   const { movies, isLoading } = useGlobalContext()
-
+  // if we are still loading diplay div loading
   if (isLoading) {
     return <div className='loading'></div>
   }
@@ -19,8 +19,11 @@ const Movies = () => {
         const { imdbID: id, Poster: poster, Title: title, Year: year } = movie
 
         return (
+          // each movie is a link to the single movie component
+          // if clicked it leads to more info about the movie
           <Link to={`/movies/${id}`} key={id} className='movie'>
             <article>
+              {/* if no photo available, display default photo */}
               <img src={poster === 'N/A' ? url : poster} alt={title} />
               <div className='movie-info'>
                 <h4 className='title'>{title}</h4>
