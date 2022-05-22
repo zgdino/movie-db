@@ -33,6 +33,7 @@ const AppProvider = ({ children }) => {
 
   useEffect(() => {
     fetchMovies(`${API_ENDPOINT}&s=${query}`)
+    // every time query changes we are fetching movies
   }, [query])
 
   return (
