@@ -6,8 +6,9 @@ export const API_ENDPOINT = `https://www.omdbapi.com/?apikey=${process.env.REACT
 const AppContext = React.createContext()
 
 const AppProvider = ({ children }) => {
+  // setting up state hooks that will be piped into other components used in this application hence - children
   const [isLoading, setIsloading] = useState(true)
-  // error is object
+  // error is an object
   const [error, setError] = useState({ show: false, msg: '' })
   const [movies, setMovies] = useState([])
   const [query, setQuery] = useState('superman')
