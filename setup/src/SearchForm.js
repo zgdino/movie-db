@@ -15,6 +15,9 @@ const SearchForm = () => {
         // set the query to input provided by user
         onChange={(e) => setQuery(e.target.value)}
       />
+      {/* error is an object */}
+      {/* if there is an error display what error.msg says */}
+      {error.show && <div className='error'>{error.msg}</div>}
     </form>
   )
 }
