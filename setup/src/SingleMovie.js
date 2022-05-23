@@ -26,11 +26,11 @@ const SingleMovie = () => {
     fetchMovie(`${API_ENDPOINT}&i=${id}`)
     // every time id changes and it will change when movie poster/link clicked
   }, [id])
-
+  // in case of loading display message that we are loading at the moment
   if (isLoading) {
     return <div className='loading'></div>
   }
-
+  // in case of error display error message provided from API
   if (error.show) {
     return (
       <div className='page-error'>
