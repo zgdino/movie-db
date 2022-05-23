@@ -12,13 +12,32 @@ const SingleMovie = () => {
   const fetchMovie = async (url) => {
     const response = await fetch(url)
     const data = await response.json()
-    console.log(data)
-  } 
+    // if no response, in both cases loading is false because we are getting something
+    if (data.Response === 'False') {
+      setError({ show: true, msg: data.Error })
+      setIsLoading(false)
+    } else {
+      setMovie(data)
+      setIsLoading(false)
+    }
+  }
 
   useEffect(() => {
     fetchMovie(`${API_ENDPOINT}&i=${id}`)
     // every time id changes and it will change when movie poster/link clicked
   }, [id])
+
+  if (isLoading) {
+    return <div className='loading'></div>
+  }
+
+  if (error.show) {
+    return (
+      <div className='page-error'>
+        <h1>{error.msg}</h1>
+      </div>
+    )
+  }
 
   return <h2>single movie</h2>
 }
