@@ -35,6 +35,7 @@ const SingleMovie = () => {
     return (
       <div className='page-error'>
         <h1>{error.msg}</h1>
+        {/* button to go back to home page */}
         <Link to='/' className='btn'>
           back to movies
         </Link>
@@ -42,6 +43,7 @@ const SingleMovie = () => {
     )
   }
   // destructuring AFTER loading and error because otherwise it will be an empty object - look at the state hook in the beginning
+  // setting up the aliases
   const { Poster: poster, Title: title, Plot: plot, Year: year } = movie
   return <section className="single-movie">
     <img src={poster} alt={title} />
@@ -49,6 +51,7 @@ const SingleMovie = () => {
       <h2>{title}</h2>
       <p>{plot}</p>
       <h4>{year}</h4>
+      {/* button to home page */}
       <Link to='/' className='btn'>
         back to movies
       </Link>
