@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { API_ENDPOINT } from './context'
+import { API_ENDPOINT, useGlobalContext } from './context'
 
 const SingleMovie = () => {
   const { id } = useParams()
@@ -41,8 +41,19 @@ const SingleMovie = () => {
       </div>
     )
   }
-
-  return <h2>single movie</h2>
+  // destructuring AFTER loading and error because otherwise it will be an empty object - look at the state hook in the beginning
+  const { Poster: poster, Title: title, Plot: plot, Year: year } = movie
+  return <section className="single-movie">
+    <img src={poster} alt={title} />
+    <div className="single-movie-info">
+      <h2>{title}</h2>
+      <p>{plot}</p>
+      <h4>{year}</h4>
+      <Link to='/' className='btn'>
+        back to movies
+      </Link>
+    </div>
+  </section>
 }
 
 export default SingleMovie
