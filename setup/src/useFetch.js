@@ -16,6 +16,7 @@ const useFetch = (urlParams) => {
      const data = await response.json()
      // properties in this API are capitalized
      if (data.Response === 'True') {
+      // set it to search results or simply data
        setData(data.Search || data)
        setError({ show: false, msg: '' })
      } else {
